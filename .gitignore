@@ -1,4 +1,4 @@
-.claude/
+.claude/commands/
 project/.venv/
 project/__pycache__/
 project/*.pyc
