@@ -82,7 +82,7 @@
 PowerShell:
 
 ```powershell
-cd C:\project\elkadzor-reviews
+cd C:\project\elkadzor-reviews\project
 python -m venv .venv
 .\.venv\Scripts\pip install -r requirements.txt
 ```
@@ -90,6 +90,7 @@ python -m venv .venv
 Скопируй `.env.example` в `.env` и добавь токен бота и `chat_id`:
 
 ```powershell
+cd C:\project\elkadzor-reviews\project
 copy .env.example .env
 ```
 
@@ -107,7 +108,7 @@ TELEGRAM_CHAT_ID=your_chat_id_here
 ### Разовый сбор отзывов
 
 ```powershell
-& C:\project\elkadzor-reviews\.venv\Scripts\python.exe C:\project\elkadzor-reviews\collect_reviews.py
+& C:\project\elkadzor-reviews\project\.venv\Scripts\python.exe C:\project\elkadzor-reviews\project\collect_reviews.py
 ```
 
 Скрипт проверит сайт Элькадор и Яндекс.Карты, добавит новые отзывы в `reviews.db` и при необходимости отправит уведомление в Telegram.
@@ -117,14 +118,14 @@ TELEGRAM_CHAT_ID=your_chat_id_here
 Запускать сбор раз в сутки:
 
 ```powershell
-cd C:\project\elkadzor-reviews
+cd C:\project\elkadzor-reviews\project
 .\.venv\Scripts\python -c "from scheduler import start_scheduler; start_scheduler(24)"
 ```
 
 ### Дашборд
 
 ```powershell
-cd C:\project\elkadzor-reviews
+cd C:\project\elkadzor-reviews\project
 $env:STREAMLIT_SERVER_HEADLESS="true"
 .\.venv\Scripts\python -m streamlit run dashboard.py
 ```
@@ -137,15 +138,15 @@ $env:STREAMLIT_SERVER_HEADLESS="true"
 
 | Файл | Назначение |
 |---|---|
-| `config.py` | Источники отзывов, заголовки, переменные окружения |
-| `parser.py` | Сбор статических страниц (сайт Элькадор) |
-| `dynamic_parser.py` | Сбор динамических источников через Playwright (Яндекс.Карты) |
-| `db.py` | Инициализация SQLite, добавление и чтение отзывов |
-| `notifier.py` | Отправка уведомлений в Telegram |
-| `scheduler.py` | Планировщик и одиночный запуск |
-| `dashboard.py` | Веб-интерфейс Streamlit |
-| `collect_reviews.py` | Точка входа для ручного сбора |
-| `requirements.txt` | Зависимости |
+| `project/config.py` | Источники отзывов, заголовки, переменные окружения |
+| `project/parser.py` | Сбор статических страниц (сайт Элькадор) |
+| `project/dynamic_parser.py` | Сбор динамических источников через Playwright (Яндекс.Карты) |
+| `project/db.py` | Инициализация SQLite, добавление и чтение отзывов |
+| `project/notifier.py` | Отправка уведомлений в Telegram |
+| `project/scheduler.py` | Планировщик и одиночный запуск |
+| `project/dashboard.py` | Веб-интерфейс Streamlit |
+| `project/collect_reviews.py` | Точка входа для ручного сбора |
+| `project/requirements.txt` | Зависимости |
 
 ---
 
