@@ -227,9 +227,10 @@ if not df.empty:
     df["date"] = df["date_parsed"].apply(_format_date)
     df = df.drop(columns=["date_parsed", "sentiment_rank"])
 
+    csv_bytes = df.to_csv(index=False, encoding="utf-8-sig").encode("utf-8-sig")
     st.download_button(
         "Экспорт CSV",
-        df.to_csv(index=False, encoding="utf-8-sig"),
+        csv_bytes,
         "reviews.csv",
         "text/csv",
     )
